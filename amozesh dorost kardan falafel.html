@@ -1,114 +1,460 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>طرز درست کردن فلافل خونگی</title>
-</head>
-
-
-<body style="background-color: rgb(161, 83, 83);">
- 
-<h1>طرز درست کردن فلافل خونگی</h1>     
-
-
-
-
-
-
-
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AR APR POMODORO</title>
 
 <style>
-  table {
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Tahoma, Arial, sans-serif;
+    color: white;
+    background:
+        linear-gradient(#07111bd9, #07111be8),
+        url("https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1920&q=80")
+        center / cover fixed;
+}
+
+.app {
     width: 100%;
-    border-collapse: collapse;
+    max-width: 500px;
+    padding: 28px 22px;
     text-align: center;
-  }
-  th, td {
-    border: 2px solid black;
+    border: 1px solid #ffffff30;
+    border-radius: 24px;
+    background: #101d2be8;
+    box-shadow: 0 15px 50px #0007;
+    backdrop-filter: blur(12px);
+}
+
+h1 {
+    font-size: 25px;
+    direction: ltr;
+}
+
+.subtitle {
+    color: #cbd5e1;
+    font-size: 13px;
+    margin-bottom: 24px;
+}
+
+button {
+    border: 1px solid #ffffff20;
+    border-radius: 11px;
+    padding: 11px 13px;
+    font-family: inherit;
+    font-size: 13px;
+    color: white;
+    background: #293b50;
+    cursor: pointer;
+}
+
+button:hover { filter: brightness(1.2); }
+button.active, .primary { background: #16866d; }
+
+.row {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+}
+
+.clock {
+    font-size: clamp(48px, 13vw, 82px);
+    font-weight: bold;
+    direction: ltr;
+    margin: 20px 0;
+    font-variant-numeric: tabular-nums;
+}
+
+.progress {
+    height: 7px;
+    background: #334155;
+    border-radius: 9px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 100%;
+    background: #34d399;
+    transition: width .3s linear;
+}
+
+.settings {
+    border: 1px solid #ffffff25;
+    border-radius: 15px;
     padding: 15px;
-    font-size: 24px; /* خیلی بزرگ‌تر */
-  }
-  th {
-    background-color: #f2f2f2;
-  }
+    margin: 20px 0;
+}
+
+.settings h2, .sounds h2 { font-size: 16px; }
+
+.time-inputs {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+.time-inputs label {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    font-size: 12px;
+    color: #cbd5e1;
+}
+
+.time-inputs input {
+    width: 75px;
+    padding: 10px 5px;
+    border: 1px solid #64748b;
+    border-radius: 9px;
+    background: #0b1522;
+    color: white;
+    text-align: center;
+    font-size: 20px;
+}
+
+.status {
+    min-height: 22px;
+    color: #a7f3d0;
+    font-size: 13px;
+    margin: 15px 0;
+}
+
+.sounds {
+    border-top: 1px solid #ffffff25;
+    padding-top: 15px;
+    margin-top: 25px;
+}
+
+.sound-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9px;
+}
+
+.volume-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 17px;
+    font-size: 13px;
+}
+
+.volume-row input {
+    flex: 1;
+    accent-color: #34d399;
+}
+
+footer {
+    font-size: 11px;
+    color: #94a3b8;
+    margin-top: 22px;
+}
 </style>
+</head>
 
-<table>
-  <thead>
-    <tr>
-      <th>مواد لازم</th>
-      <th>مقدار برای ۱ نفر</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>نخود خام</td>
-      <td>۵۰ گرم</td>
-    </tr>
-    <tr>
-      <td>پیاز</td>
-      <td>۲۵ گرم</td>
-    </tr>
-    <tr>
-      <td>سیر</td>
-      <td>۱ حبه کوچک</td>
-    </tr>
-    <tr>
-      <td>جعفری تازه</td>
-      <td>۱ قاشق غذاخوری</td>
-    </tr>
-    <tr>
-      <td>آرد نخودچی</td>
-      <td>۱ قاشق مرباخوری</td>
-    </tr>
-    <tr>
-      <td>بکینگ پودر</td>
-      <td>¼ قاشق چای‌خوری</td>
-    </tr>
-    <tr>
-      <td>تخم مرغ</td>
-      <td>¼ عدد</td>
-    </tr>
-    <tr>
-      <td>نمک و فلفل</td>
-      <td>به میزان لازم</td>
-    </tr>
-    <tr>
-      <td>ادویه فلافل</td>
-      <td>به میزان لازم</td>
-    </tr>
-    <tr>
-      <td>روغن برای سرخ کردن</td>
-      <td>به مقدار لازم</td>
-    </tr>
-  </tbody>
-</table>
+<body>
+<main class="app">
 
+    <h1>🌧️ AR APR POMODORO 🎹</h1>
+    <div class="subtitle">Focus • Relax • Achieve</div>
 
-<h2>توضیحات مواد لازم برای تهیه فلافل (برای هر نفر)</h2>
+    <div class="row">
+        <button class="active" data-minutes="25">🍅 تمرکز ۲۵ دقیقه</button>
+        <button data-minutes="5">☕ استراحت ۵ دقیقه</button>
+        <button data-minutes="15">🌿 استراحت ۱۵ دقیقه</button>
+    </div>
 
-<ol style="font-size: 22px; line-height: 1.8;">
-  <li><strong>نخود خام:</strong> حدود ۵۰ گرم. نخود را ۲۴ ساعت قبل خیس کنید و آب آن را عوض کنید. نخود باید خام بماند و فقط خیس بخورد.</li>
-  <li><strong>پیاز:</strong> حدود یک‌چهارم یک پیاز متوسط (۲۵ گرم). رنده یا خرد شده، آب اضافی آن گرفته شود.</li>
-  <li><strong>سیر:</strong> یک حبه کوچک. رنده یا له شده برای عطر بهتر.</li>
-  <li><strong>جعفری تازه (اختیاری):</strong> یک قاشق غذاخوری خرد شده. طعم و رنگ بهتری به فلافل می‌دهد.</li>
-  <li><strong>آرد نخودچی یا آرد معمولی:</strong> یک قاشق مرباخوری برای انسجام مواد. در صورت چسبندگی خوب، می‌توان حذف کرد.</li>
-  <li><strong>بکینگ پودر:</strong> یک‌چهارم قاشق چای‌خوری. کمک می‌کند فلافل پف کند و نرم‌تر شود.</li>
-  <li><strong>تخم مرغ (اختیاری):</strong> حدود یک‌چهارم عدد. در صورت شل بودن مواد می‌توان اضافه کرد.</li>
-  <li><strong>نمک و فلفل:</strong> به میزان لازم. معمولاً کمی تندتر خوش‌طعم‌تر می‌شود.</li>
-  <li><strong>ادویه فلافل یا ادویه دلخواه:</strong> به میزان لازم. معمولاً شامل زیره، تخم گشنیز و فلفل قرمز است.</li>
-  <li><strong>روغن برای سرخ کردن:</strong> به مقدار لازم. روغن باید داغ و فراوان باشد تا فلافل خوب سرخ شود.</li>
-</ol
-<h1>طرز اماده کردن</h1>
+    <div class="clock" id="clock">00:25:00</div>
 
-<h3>نخودهای خیس شده را آبکش کرده و با پیاز، سیر و جعفری داخل غذاساز یا آسیاب خرد کنید تا مخلوطی یکدست و نرم به دست آید.  
-آرد نخودچی، بکینگ پودر، نمک، فلفل و ادویه‌ها را به مخلوط اضافه کرده و خوب مخلوط کنید.  
-اگر مواد شل بود، تخم مرغ را اضافه کنید تا مواد به هم بچسبند.  
-از مواد به اندازه یک گردو بردارید و با دست گرد کنید.  
-روغن را در ماهیتابه یا قابلمه عمیق داغ کنید (حدود ۱۸۰ درجه سانتیگراد).  
-فلافل‌ها را داخل روغن داغ قرار دهید و تا زمانی که طلایی و خوش‌رنگ شوند سرخ کنید (حدود ۳-۴ دقیقه).  
-پس از سرخ شدن، با دستمال کاغذی روغن اضافی را بگیرید و فلافل را سرو کنی</h3> 
+    <div class="progress">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <section class="settings">
+        <h2>⏱️ تنظیم زمان دلخواه</h2>
+
+        <div class="time-inputs">
+            <label>ساعت
+                <input id="hours" type="number" min="0" max="999" value="0">
+            </label>
+
+            <label>دقیقه
+                <input id="minutes" type="number" min="0" max="59" value="25">
+            </label>
+
+            <label>ثانیه
+                <input id="seconds" type="number" min="0" max="59" value="0">
+            </label>
+        </div>
+
+        <button id="applyTime" class="primary">اعمال زمان دلخواه</button>
+    </section>
+
+    <div class="row">
+        <button id="startBtn" class="primary">▶ شروع</button>
+        <button id="pauseBtn">⏸ توقف موقت</button>
+        <button id="resetBtn">↻ از اول</button>
+    </div>
+
+    <div class="status" id="status">
+        زمانت را تنظیم کن و روی شروع بزن.
+    </div>
+
+    <section class="sounds">
+        <h2>🎧 صداهای طبیعت</h2>
+
+        <div class="sound-buttons">
+            <button id="rainBtn">🌧️ پخش باران</button>
+            <button id="roosterBtn">🐓 صدای خروس</button>
+            <button id="dogBtn">🐕 صدای سگ</button>
+            <button id="stopSoundsBtn">🔇 قطع صداها</button>
+        </div>
+
+        <div class="volume-row">
+            <label for="volume">🔊 صدا</label>
+            <input type="range" id="volume" min="0" max="100" value="50">
+            <span id="volumeValue">50%</span>
+        </div>
+    </section>
+
+    <footer>AR APR • Focus timer</footer>
+</main>
+
+<audio id="rainAudio"
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Rain.ogg"
+preload="none" loop></audio>
+
+<audio id="roosterAudio"
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Rooster_crowing.ogg"
+preload="none"></audio>
+
+<audio id="dogAudio"
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Barking_of_a_dog.ogg"
+preload="none"></audio>
+
+<script>
+const $ = id => document.getElementById(id);
+
+const clock = $("clock");
+const progressBar = $("progressBar");
+const statusText = $("status");
+
+const rainAudio = $("rainAudio");
+const roosterAudio = $("roosterAudio");
+const dogAudio = $("dogAudio");
+const audioList = [rainAudio, roosterAudio, dogAudio];
+
+let initialSeconds = 1500;
+let remainingSeconds = 1500;
+let timer = null;
+let volume = 0.5;
+
+audioList.forEach(audio => audio.volume = volume);
+
+function showTime() {
+    const h = Math.floor(remainingSeconds / 3600);
+    const m = Math.floor((remainingSeconds % 3600) / 60);
+    const s = remainingSeconds % 60;
+
+    clock.textContent = [h, m, s]
+        .map(n => String(n).padStart(2, "0"))
+        .join(":");
+
+    const percent = initialSeconds > 0
+        ? remainingSeconds / initialSeconds * 100
+        : 0;
+
+    progressBar.style.width = percent + "%";
+    document.title = clock.textContent + " | AR APR POMODORO";
+}
+
+function stopTimer() {
+    if (timer !== null) {
+        clearInterval(timer);
+        timer = null;
+    }
+}
+
+function startTimer() {
+    if (timer !== null) return;
+
+    if (remainingSeconds <= 0) {
+        statusText.textContent = "اول یک زمان بیشتر از صفر تنظیم کن.";
+        return;
+    }
+
+    statusText.textContent = "وقت تمرکز است! 💪";
+
+    timer = setInterval(() => {
+        if (remainingSeconds > 0) {
+            remainingSeconds--;
+            showTime();
+        }
+
+        if (remainingSeconds === 0) {
+            stopTimer();
+            finishTimer();
+        }
+    }, 1000);
+}
+
+function finishTimer() {
+    statusText.textContent = "زمان تمام شد! 🐓🐕";
+
+    // صدای باران قطع می‌شود.
+    rainAudio.pause();
+    rainAudio.currentTime = 0;
+
+    // صداهای قبلی حیوانات متوقف می‌شوند.
+    roosterAudio.pause();
+    dogAudio.pause();
+
+    roosterAudio.currentTime = 0;
+    dogAudio.currentTime = 0;
+
+    // ابتدا خروس و سپس سگ پخش می‌شود.
+    roosterAudio.play()
+        .then(() => {
+            roosterAudio.onended = () => {
+                dogAudio.currentTime = 0;
+                dogAudio.play().catch(() => {
+                    statusText.textContent =
+                        "تایمر تمام شد، اما صدای سگ پخش نشد.";
+                });
+            };
+        })
+        .catch(() => {
+            statusText.textContent =
+                "زمان تمام شد، اما صدای خروس پخش نشد. لینک صدا یا اینترنت را بررسی کن.";
+        });
+}
+
+function resetTimer() {
+    stopTimer();
+    remainingSeconds = initialSeconds;
+    showTime();
+    statusText.textContent = "تایمر از اول آماده است.";
+}
+
+function applyCustomTime() {
+    const h = Math.max(0, Math.min(999, Number($("hours").value) || 0));
+    const m = Math.max(0, Math.min(59, Number($("minutes").value) || 0));
+    const s = Math.max(0, Math.min(59, Number($("seconds").value) || 0));
+
+    $("hours").value = h;
+    $("minutes").value = m;
+    $("seconds").value = s;
+
+    const total = h * 3600 + m * 60 + s;
+
+    if (total <= 0) {
+        statusText.textContent = "زمان باید بیشتر از صفر باشد.";
+        return;
+    }
+
+    stopTimer();
+    initialSeconds = total;
+    remainingSeconds = total;
+
+    document.querySelectorAll("[data-minutes]").forEach(b => {
+        b.classList.remove("active");
+    });
+
+    showTime();
+    statusText.textContent = "زمان دلخواه اعمال شد.";
+}
+
+document.querySelectorAll("[data-minutes]").forEach(button => {
+    button.addEventListener("click", () => {
+        document.querySelectorAll("[data-minutes]").forEach(b => {
+            b.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+        const mins = Number(button.dataset.minutes);
+
+        $("hours").value = 0;
+        $("minutes").value = mins;
+        $("seconds").value = 0;
+
+        stopTimer();
+        initialSeconds = mins * 60;
+        remainingSeconds = initialSeconds;
+
+        showTime();
+        statusText.textContent = "زمان انتخاب شد.";
+    });
+});
+
+$("applyTime").addEventListener("click", applyCustomTime);
+$("startBtn").addEventListener("click", startTimer);
+
+$("pauseBtn").addEventListener("click", () => {
+    stopTimer();
+    statusText.textContent = "تایمر موقتاً متوقف شد.";
+});
+
+$("resetBtn").addEventListener("click", resetTimer);
+
+function playSound(audio, label, loop = false) {
+    audio.loop = loop;
+
+    audio.play()
+        .then(() => {
+            statusText.textContent = label + " در حال پخش است.";
+        })
+        .catch(() => {
+            statusText.textContent =
+                "صدا پخش نشد؛ اینترنت یا لینک فایل صوتی را بررسی کن.";
+        });
+}
+
+$("rainBtn").addEventListener("click", () => {
+    playSound(rainAudio, "صدای باران", true);
+});
+
+$("roosterBtn").addEventListener("click", () => {
+    playSound(roosterAudio, "صدای خروس");
+});
+
+$("dogBtn").addEventListener("click", () => {
+    playSound(dogAudio, "صدای سگ");
+});
+
+$("stopSoundsBtn").addEventListener("click", () => {
+    audioList.forEach(audio => {
+        audio.pause();
+        audio.currentTime = 0;
+    });
+
+    statusText.textContent = "همه صداها قطع شدند.";
+});
+
+$("volume").addEventListener("input", event => {
+    volume = Number(event.target.value) / 100;
+
+    audioList.forEach(audio => audio.volume = volume);
+
+    $("volumeValue").textContent = event.target.value + "%";
+});
+
+showTime();
+</script>
 </body>
 </html>
